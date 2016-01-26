@@ -1,0 +1,139 @@
+{% load staticfiles %}
+<!--DOCTYPE html -->
+<html>
+<head>
+<title>{% block head_title %}Hello Bro!{% endblock head_title %}</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+<link rel='stylesheet' href='{% static "css/base.css" %}' />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href = "css/styles.css" rel = "stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+<style>
+
+  .sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #F5F5F5;
+    border-right: 1px solid #EEE;
+    }
+
+</style>
+
+</head>
+<body>
+
+{% include "messages_display.html" %}
+<div class="container">
+	<div class="row">
+<!-- left sidebar -->
+  
+    <div class="col-sm-3 sidebar">
+            <ul class="nav nav-sidebar">
+              <li class="active"><a href="#">KATEGORIE<span class="sr-only">(current)</span></a></li>
+              <li><a href="#">Wędliny</a></li>
+              <li><a href="#">Garmażeria</a></li>
+              <li><a href="#">Art. spożywcze</a></li>
+              <li><a href="">Napoje</a></li>
+              <li><a href="">Nav item again</a></li>
+              <li><a href="">One more nav</a></li>
+            </ul>
+
+        <address>
+            <h2>Adres:</h2>
+            <strong>Drygalski Allee 117</strong><br>
+            M81477 München<br>
+            <abbr title="Phone">Phone:</abbr> 015211401566
+        </address>
+        <address>
+            <strong>Andrzej Dallak</strong><br>
+            <a href="mailto:#">first.last@example.com</a>
+        </address>
+
+<!-- Set height and width with CSS -->
+<div id="googleMap" style="height:200px;width:100%;">
+</div>
+
+<!-- Add Google Maps -->
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script>
+
+var myCenter = new google.maps.LatLng(41.878114, -87.629798);
+
+function initialize() {
+var mapProp = {
+center:myCenter,
+zoom:14,
+scrollwheel:false,
+draggable:false,
+mapTypeId:google.maps.MapTypeId.ROADMAP
+};
+
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+var marker = new google.maps.Marker({
+position:myCenter,
+});
+
+marker.setMap(map);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+    </div>
+
+
+<div class="col-sm-9 col-sm-offset-3" id = "myCarousel" class = "carousel">
+
+    <ol class = "carousel-indicators">
+        <li data-target = "#myCarousel" data-slite-to = "0" class = "active"></li>
+        <li data-target = "#myCarousel" data-slite-to = "1" ></li>
+        <li data-target = "#myCarousel" data-slite-to = "2" ></li>
+    </ol>
+
+    <div class = "carousel-inner">
+
+        <div class = "item active">
+            <img src = "http://www.tapetus.pl/obrazki/n/106445_slodki-kotek.jpg" alt = "Beach" class = "img-responsive">
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+{% block content %}
+
+{% endblock content %}
+
+</div>
+
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+      <!-- Bootstrap core JavaScript
+      ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+      <script src="../../dist/js/bootstrap.min.js"></script>
+      <script src="../../assets/js/docs.min.js"></script>
+      <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+      <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+</body>
+</html>
