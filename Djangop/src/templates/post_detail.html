@@ -7,11 +7,34 @@
 
 {% block content %}
 
-<div class="col-sm-9 col-sm-offset-3">
+<!-- Wyswietla wszystkie napoje z kategorii napoje
+{% for napoj in napoje_q %}
+
+              <div class="col-sm-2">
+                <div class="thumbnail">
+                        {% if napoj.image %}
+                          <img src='{{ napoj.image.url }}' class='img-responsive'/>
+                        {% endif %}
+
+                  <div class="caption">
+                        <h2><a href='{{ napoj.get_absolute_url }}'>{{ napoj.title }}</a><small> {{ napoj.timestamp }}</small></h2>
+                        <p>{{ napoj.content|linebreaks|truncatechars:120 }}</p>
+                        <p><a href="{{ napoj.get_absolute_url }}" class="btn btn-primary" role="button">View</a></p>
+                  </div>
+                </div>
+              </div>
+
+{% endfor %}
+-->
+
+
+
+
+<div class="col-sm-9">
 	{% if instance.image %}
 	<img src='{{ instance.image.url }}' class='img-responsive' />
 	{% endif %}
-<h1>{{ title }} <small>{{ instance.timestamp }}<br/></small></h1>
+<h1>{{ title }}<small><br/></small></h1>
 
 {{ instance.content|linebreaks }}<br/>
 

@@ -22,20 +22,27 @@ class Post(models.Model):
 		blank=True)
 	content = models.TextField()
 	updated = models.DateTimeField(auto_now=True, auto_now_add=False)
+	price = models.DecimalField(decimal_places=2, max_digits=20)
 	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
-	MIESA = 'MI'
+	POST = 'PO'
+	WEDLINY = 'WE'
 	GARMAZERIA = 'GA'
 	ART_SPOZYWCZE = 'AS'
 	NAPOJE = 'NA'
 	KATEGORIA_CHOICES = (
-		(MIESA, 'Miesa'),
+		(WEDLINY, 'Wedliny'),
 		(GARMAZERIA, 'Garmazeria'),
 		(ART_SPOZYWCZE, 'Artykuly spozywcze'),
 		(NAPOJE, 'Napoje'),
+		(POST, 'Posty'),
+
 	)
 	kategoria = models.CharField(max_length=2,
 									choices=KATEGORIA_CHOICES,
 									default=ART_SPOZYWCZE)
+
+# Query ktory ma filtrowac tylko posty z kategorii napoje.
+# napoje_query = Post.objects.filter(kategoria=Post.NAPOJE)
 
 	def __unicode__(self):
 		return self.title

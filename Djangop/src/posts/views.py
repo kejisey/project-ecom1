@@ -32,8 +32,41 @@ def post_detail(request, slug=None):
 	}
 	return render(request, "post_detail.html", context)
 
+# produkty views - poczatek
+
+def wedliny_list(request, slug=None):
+	wedliny_query = Post.objects.filter(kategoria=Post.WEDLINY)
+	context = {
+		"wedliny_q": wedliny_query,
+	}
+	return render(request, "wedliny.html", context)
+
+def garmazeria_list(request, slug=None):
+	garmazeria_query = Post.objects.filter(kategoria=Post.GARMAZERIA)
+	context = {
+		"garmazeria_q": garmazeria_query,
+	}
+	return render(request, "garmazeria.html", context)
+
+def art_spozywcze_list(request, slug=None):
+	art_spozywcze_query = Post.objects.filter(kategoria=Post.ART_SPOZYWCZE)
+	context = {
+		"art_spozywcze_q": art_spozywcze_query,
+	}
+	return render(request, "post_detail.html", context)
+
+
+def napoje_list(request, slug=None):
+	napoje_query = Post.objects.filter(kategoria=Post.NAPOJE)
+	context = {
+		"napoje_q": napoje_query,
+	}
+	return render(request, "post_detail.html", context)
+
+# produkty views -  koniec
+
 def post_list(request):
-	queryset_list = Post.objects.all().order_by("-timestamp")
+	queryset_list = Post.objects.filter(kategoria=Post.POST).order_by("-timestamp")
 	paginator = Paginator(queryset_list, 4) # Show 10 contacts per page
 
 	page = request.GET.get('post')
@@ -51,9 +84,6 @@ def post_list(request):
 		"title": "List"
 	}	
 	return render(request, "post_list.html", context)
-
-def items1(request):
-	return render(request, "items1.html")
 
 
 def post_update(request, slug=None):

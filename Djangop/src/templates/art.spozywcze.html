@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+
+{% for art in art_spozywcze_q %}
+
+              <div class="col-sm-2">
+                <div class="thumbnail">
+                        {% if art.image %}
+                          <img src='{{ art.image.url }}' class='img-responsive'/>
+                        {% endif %}
+
+                  <div class="caption">
+                        <h4><a href='{{ art.get_absolute_url }}'>{{ art.title }}</a></h4>
+                        
+                        <p>{{ art.content|linebreaks|truncatechars:120 }}</p>
+                        <p><a href="{{ art.get_absolute_url }}" class="btn btn-primary" role="button">View</a><small>{{art.price }}$</small></p>
+                  </div> 
+                </div>
+              </div>
+
+{% endfor %}
+
+{% endblock content %}

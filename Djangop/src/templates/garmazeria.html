@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+
+{% for item1 in garmazeria_q %}
+
+              <div class="col-sm-2">
+                <div class="thumbnail">
+                        {% if item1.image %}
+                          <img src='{{ item1.image.url }}' class='img-responsive'/>
+                        {% endif %}
+
+                  <div class="caption">
+                        <h4><a href='{{ item1.get_absolute_url }}'>{{ item1.title }}</a></h4>
+                        
+                        <p>{{ item1.content|linebreaks|truncatechars:120 }}</p>
+                        <p><a href="{{ item1.get_absolute_url }}" class="btn btn-primary" role="button">View</a><small>{{item1.price }}$</small></p>
+                  </div> 
+                </div>
+              </div>
+
+{% endfor %}
+
+{% endblock content %}

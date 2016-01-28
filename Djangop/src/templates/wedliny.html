@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+
+{% for wedlina in wedliny_q %}
+
+              <div class="col-sm-2">
+                <div class="thumbnail">
+                        {% if wedlina.image %}
+                          <img src='{{ wedlina.image.url }}' class='img-responsive'/>
+                        {% endif %}
+
+                  <div class="caption">
+                        <h4><a href='{{ wedlina.get_absolute_url }}'>{{ wedlina.title }}</a></h4>
+                        <h4 class="push-right">${{wedlina.price }}</h4>
+                        
+                        <p>{{ wedlina.content|linebreaks|truncatechars:120 }}</p>
+                        <p><a href="{{ wedlina.get_absolute_url }}" class="btn btn-primary" role="button">View</a></p>
+                  </div> 
+                </div>
+              </div>
+
+{% endfor %}
+
+{% endblock content %}
